@@ -9,8 +9,8 @@
 
 Make a subdirectory 'Debug'. In 'Debug' type 'cmake ..' to generate a makefile.  If SFML is not installed in standard location, you will need to set the LIB and INCLUDE environment variables. For example if SFML is installed in ~/SFML, then you can adjust the environment variables (assuming linux and a BASH-shell) by:
 
-export LIB=$LIB:~/SFML/lib
-export INCLUDE=$INCLUDE:~/SFML/include
+export LIB=$LIB:\~/SFML/lib
+export INCLUDE=$INCLUDE:\~/SFML/include
 
 These environment variables are only valid in your current terminal. To make them permanent, add the above two lines to your '~/.profile' file.
 
