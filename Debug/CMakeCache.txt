@@ -279,6 +279,9 @@ csci437_BINARY_DIR:STATIC=/Users/clareheinbaugh/Desktop/game-design/pong/Debug
 //Value Computed by CMake
 csci437_SOURCE_DIR:STATIC=/Users/clareheinbaugh/Desktop/game-design/pong
 
+//Dependencies for the target
+pong_core_LIB_DEPENDS:STATIC=general;/Library/Frameworks/sfml-graphics.framework;general;/Library/Frameworks/sfml-window.framework;general;/Library/Frameworks/sfml-system.framework;general;/Library/Frameworks/sfml-audio.framework;general;/Library/Frameworks/sfml-network.framework;
+
 
 ########################
 # INTERNAL cache entries

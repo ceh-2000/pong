@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Paddle.h
+SFML/Graphics.hpp
+-
+
+/Users/clareheinbaugh/Desktop/game-design/pong/bin/main.cpp
+SFML/Graphics.hpp
+-
+iostream
+-
+Paddle.h
+/Users/clareheinbaugh/Desktop/game-design/pong/bin/Paddle.h
+

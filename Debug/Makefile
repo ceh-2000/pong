@@ -130,44 +130,138 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named helloworld
+# Target rules for targets named main
 
 # Build rule for target.
-helloworld: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 helloworld
-.PHONY : helloworld
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-helloworld/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
-.PHONY : helloworld/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
-bin/helloworld.o: bin/helloworld.cpp.o
+#=============================================================================
+# Target rules for targets named pong_core
 
-.PHONY : bin/helloworld.o
+# Build rule for target.
+pong_core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pong_core
+.PHONY : pong_core
+
+# fast build rule for target.
+pong_core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/build
+.PHONY : pong_core/fast
+
+bin/main.o: bin/main.cpp.o
+
+.PHONY : bin/main.o
 
 # target to build an object file
-bin/helloworld.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.o
-.PHONY : bin/helloworld.cpp.o
+bin/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bin/main.cpp.o
+.PHONY : bin/main.cpp.o
 
-bin/helloworld.i: bin/helloworld.cpp.i
+bin/main.i: bin/main.cpp.i
 
-.PHONY : bin/helloworld.i
+.PHONY : bin/main.i
 
 # target to preprocess a source file
-bin/helloworld.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.i
-.PHONY : bin/helloworld.cpp.i
+bin/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bin/main.cpp.i
+.PHONY : bin/main.cpp.i
 
-bin/helloworld.s: bin/helloworld.cpp.s
+bin/main.s: bin/main.cpp.s
 
-.PHONY : bin/helloworld.s
+.PHONY : bin/main.s
 
 # target to generate assembly for a file
-bin/helloworld.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.s
-.PHONY : bin/helloworld.cpp.s
+bin/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bin/main.cpp.s
+.PHONY : bin/main.cpp.s
+
+src/Paddle.o: src/Paddle.cpp.o
+
+.PHONY : src/Paddle.o
+
+# target to build an object file
+src/Paddle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Paddle.cpp.o
+.PHONY : src/Paddle.cpp.o
+
+src/Paddle.i: src/Paddle.cpp.i
+
+.PHONY : src/Paddle.i
+
+# target to preprocess a source file
+src/Paddle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Paddle.cpp.i
+.PHONY : src/Paddle.cpp.i
+
+src/Paddle.s: src/Paddle.cpp.s
+
+.PHONY : src/Paddle.s
+
+# target to generate assembly for a file
+src/Paddle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Paddle.cpp.s
+.PHONY : src/Paddle.cpp.s
+
+src/ball.o: src/ball.cpp.o
+
+.PHONY : src/ball.o
+
+# target to build an object file
+src/ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.o
+.PHONY : src/ball.cpp.o
+
+src/ball.i: src/ball.cpp.i
+
+.PHONY : src/ball.i
+
+# target to preprocess a source file
+src/ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.i
+.PHONY : src/ball.cpp.i
+
+src/ball.s: src/ball.cpp.s
+
+.PHONY : src/ball.s
+
+# target to generate assembly for a file
+src/ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.s
+.PHONY : src/ball.cpp.s
+
+src/game.o: src/game.cpp.o
+
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
 
 # Help Target
 help:
@@ -177,10 +271,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... helloworld"
-	@echo "... bin/helloworld.o"
-	@echo "... bin/helloworld.i"
-	@echo "... bin/helloworld.s"
+	@echo "... main"
+	@echo "... pong_core"
+	@echo "... bin/main.o"
+	@echo "... bin/main.i"
+	@echo "... bin/main.s"
+	@echo "... src/Paddle.o"
+	@echo "... src/Paddle.i"
+	@echo "... src/Paddle.s"
+	@echo "... src/ball.o"
+	@echo "... src/ball.i"
+	@echo "... src/ball.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 .PHONY : help
 
 
