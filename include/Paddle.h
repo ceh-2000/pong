@@ -10,6 +10,8 @@ public:
     void setPosition(float x, float y);
     void update(float deltaTime, bool isUp);
     void draw(sf::RenderWindow& app);
+    sf::Vector2f getPosition();
+    sf::Vector2f getHalfSize();
 
 private:
     sf::RectangleShape paddle;

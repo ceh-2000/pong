@@ -4,6 +4,8 @@
 CMakeFiles/pong_core.dir/src/Paddle.cpp.o: ../include/Paddle.h
 CMakeFiles/pong_core.dir/src/Paddle.cpp.o: ../src/Paddle.cpp
 
+CMakeFiles/pong_core.dir/src/ball.cpp.o: ../include/Ball.h
+CMakeFiles/pong_core.dir/src/ball.cpp.o: ../include/Paddle.h
 CMakeFiles/pong_core.dir/src/ball.cpp.o: ../src/ball.cpp
 
 CMakeFiles/pong_core.dir/src/game.cpp.o: ../src/game.cpp

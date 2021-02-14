@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
+../include/Ball.h
+SFML/Graphics.hpp
+-
+Paddle.h
+../include/Paddle.h
+
 ../include/Paddle.h
 SFML/Graphics.hpp
 -
 
-/Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.cpp
-Paddle.h
-/Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/ball.cpp
+Ball.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.h
 iostream
 -
 
