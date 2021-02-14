@@ -17,8 +17,8 @@ int main(int argc, char** argv)
   paddleAI.setPosition(100.0f, 100.0f);
 
   // Instantiate the ball that will bounce between the paddles
-  Ball ball(100.0f);
-  ball.setPosition(400.0f, 300.0f);
+  Ball ball(200.0f, 100.0f);
+  ball.setPosition(400.0f, 50.0f);
 
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
@@ -50,6 +50,9 @@ int main(int argc, char** argv)
     }
 
     paddleAI.update(deltaTime, false);
+    ball.checkCollision(paddleAI);
+    ball.checkCollision(paddleHuman);
+    ball.checkCollisionWall(App);
     ball.update(deltaTime);
 
     // clear screen and fill with blue
