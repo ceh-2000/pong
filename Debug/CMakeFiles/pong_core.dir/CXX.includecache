@@ -16,7 +16,7 @@ Paddle.h
 SFML/Graphics.hpp
 -
 
-/Users/clareheinbaugh/Desktop/game-design/pong/src/ball.cpp
+/Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp
 Ball.h
 /Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.h
 iostream

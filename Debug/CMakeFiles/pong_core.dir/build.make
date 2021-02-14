@@ -76,9 +76,22 @@ include CMakeFiles/pong_core.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/pong_core.dir/flags.make
 
+CMakeFiles/pong_core.dir/src/Ball.cpp.o: CMakeFiles/pong_core.dir/flags.make
+CMakeFiles/pong_core.dir/src/Ball.cpp.o: ../src/Ball.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pong_core.dir/src/Ball.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pong_core.dir/src/Ball.cpp.o -c /Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp
+
+CMakeFiles/pong_core.dir/src/Ball.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong_core.dir/src/Ball.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp > CMakeFiles/pong_core.dir/src/Ball.cpp.i
+
+CMakeFiles/pong_core.dir/src/Ball.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong_core.dir/src/Ball.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp -o CMakeFiles/pong_core.dir/src/Ball.cpp.s
+
 CMakeFiles/pong_core.dir/src/Paddle.cpp.o: CMakeFiles/pong_core.dir/flags.make
 CMakeFiles/pong_core.dir/src/Paddle.cpp.o: ../src/Paddle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pong_core.dir/src/Paddle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pong_core.dir/src/Paddle.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pong_core.dir/src/Paddle.cpp.o -c /Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.cpp
 
 CMakeFiles/pong_core.dir/src/Paddle.cpp.i: cmake_force
@@ -89,47 +102,19 @@ CMakeFiles/pong_core.dir/src/Paddle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong_core.dir/src/Paddle.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.cpp -o CMakeFiles/pong_core.dir/src/Paddle.cpp.s
 
-CMakeFiles/pong_core.dir/src/ball.cpp.o: CMakeFiles/pong_core.dir/flags.make
-CMakeFiles/pong_core.dir/src/ball.cpp.o: ../src/ball.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pong_core.dir/src/ball.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pong_core.dir/src/ball.cpp.o -c /Users/clareheinbaugh/Desktop/game-design/pong/src/ball.cpp
-
-CMakeFiles/pong_core.dir/src/ball.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong_core.dir/src/ball.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/clareheinbaugh/Desktop/game-design/pong/src/ball.cpp > CMakeFiles/pong_core.dir/src/ball.cpp.i
-
-CMakeFiles/pong_core.dir/src/ball.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong_core.dir/src/ball.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/clareheinbaugh/Desktop/game-design/pong/src/ball.cpp -o CMakeFiles/pong_core.dir/src/ball.cpp.s
-
-CMakeFiles/pong_core.dir/src/game.cpp.o: CMakeFiles/pong_core.dir/flags.make
-CMakeFiles/pong_core.dir/src/game.cpp.o: ../src/game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pong_core.dir/src/game.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pong_core.dir/src/game.cpp.o -c /Users/clareheinbaugh/Desktop/game-design/pong/src/game.cpp
-
-CMakeFiles/pong_core.dir/src/game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong_core.dir/src/game.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/clareheinbaugh/Desktop/game-design/pong/src/game.cpp > CMakeFiles/pong_core.dir/src/game.cpp.i
-
-CMakeFiles/pong_core.dir/src/game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong_core.dir/src/game.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/clareheinbaugh/Desktop/game-design/pong/src/game.cpp -o CMakeFiles/pong_core.dir/src/game.cpp.s
-
 # Object files for target pong_core
 pong_core_OBJECTS = \
-"CMakeFiles/pong_core.dir/src/Paddle.cpp.o" \
-"CMakeFiles/pong_core.dir/src/ball.cpp.o" \
-"CMakeFiles/pong_core.dir/src/game.cpp.o"
+"CMakeFiles/pong_core.dir/src/Ball.cpp.o" \
+"CMakeFiles/pong_core.dir/src/Paddle.cpp.o"
 
 # External object files for target pong_core
 pong_core_EXTERNAL_OBJECTS =
 
+libpong_core.a: CMakeFiles/pong_core.dir/src/Ball.cpp.o
 libpong_core.a: CMakeFiles/pong_core.dir/src/Paddle.cpp.o
-libpong_core.a: CMakeFiles/pong_core.dir/src/ball.cpp.o
-libpong_core.a: CMakeFiles/pong_core.dir/src/game.cpp.o
 libpong_core.a: CMakeFiles/pong_core.dir/build.make
 libpong_core.a: CMakeFiles/pong_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libpong_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libpong_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/pong_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pong_core.dir/link.txt --verbose=$(VERBOSE)
 

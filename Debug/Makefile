@@ -182,6 +182,33 @@ bin/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/bin/main.cpp.s
 .PHONY : bin/main.cpp.s
 
+src/Ball.o: src/Ball.cpp.o
+
+.PHONY : src/Ball.o
+
+# target to build an object file
+src/Ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Ball.cpp.o
+.PHONY : src/Ball.cpp.o
+
+src/Ball.i: src/Ball.cpp.i
+
+.PHONY : src/Ball.i
+
+# target to preprocess a source file
+src/Ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Ball.cpp.i
+.PHONY : src/Ball.cpp.i
+
+src/Ball.s: src/Ball.cpp.s
+
+.PHONY : src/Ball.s
+
+# target to generate assembly for a file
+src/Ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Ball.cpp.s
+.PHONY : src/Ball.cpp.s
+
 src/Paddle.o: src/Paddle.cpp.o
 
 .PHONY : src/Paddle.o
@@ -209,60 +236,6 @@ src/Paddle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Paddle.cpp.s
 .PHONY : src/Paddle.cpp.s
 
-src/ball.o: src/ball.cpp.o
-
-.PHONY : src/ball.o
-
-# target to build an object file
-src/ball.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.o
-.PHONY : src/ball.cpp.o
-
-src/ball.i: src/ball.cpp.i
-
-.PHONY : src/ball.i
-
-# target to preprocess a source file
-src/ball.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.i
-.PHONY : src/ball.cpp.i
-
-src/ball.s: src/ball.cpp.s
-
-.PHONY : src/ball.s
-
-# target to generate assembly for a file
-src/ball.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/ball.cpp.s
-.PHONY : src/ball.cpp.s
-
-src/game.o: src/game.cpp.o
-
-.PHONY : src/game.o
-
-# target to build an object file
-src/game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.o
-.PHONY : src/game.cpp.o
-
-src/game.i: src/game.cpp.i
-
-.PHONY : src/game.i
-
-# target to preprocess a source file
-src/game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.i
-.PHONY : src/game.cpp.i
-
-src/game.s: src/game.cpp.s
-
-.PHONY : src/game.s
-
-# target to generate assembly for a file
-src/game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/game.cpp.s
-.PHONY : src/game.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -276,15 +249,12 @@ help:
 	@echo "... bin/main.o"
 	@echo "... bin/main.i"
 	@echo "... bin/main.s"
+	@echo "... src/Ball.o"
+	@echo "... src/Ball.i"
+	@echo "... src/Ball.s"
 	@echo "... src/Paddle.o"
 	@echo "... src/Paddle.i"
 	@echo "... src/Paddle.s"
-	@echo "... src/ball.o"
-	@echo "... src/ball.i"
-	@echo "... src/ball.s"
-	@echo "... src/game.o"
-	@echo "... src/game.i"
-	@echo "... src/game.s"
 .PHONY : help
 
 
