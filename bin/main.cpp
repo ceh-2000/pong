@@ -2,52 +2,7 @@
 #include <iostream>
 #include "Paddle.h"
 #include "Ball.h"
-
-void resetGame(Paddle& paddle1, Paddle& paddle2, Ball& ball){
-  
-}
-
-void resetRound(Paddle& paddle1, Paddle& paddle2, Ball& ball){
-  paddle1.setPosition(100.0f, 100.0f);
-  paddle2.setPosition(700.0f, 100.0f);
-  ball.setPosition(400.0f, 300.0f);
-  ball.setVelocity(200.0f);
-}
-
-void updateGame(Paddle& paddle1, Paddle& paddle2, Ball& ball, sf::RenderWindow& app, float deltaTime){
-    // Update the first paddle
-    paddle1.update(deltaTime, false);
-
-    // Draw the new position of our paddle given keyboard input
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-      paddle2.update(deltaTime, true);
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-      paddle2.update(deltaTime, false);
-    }
-
-    // Update the ball
-    ball.checkCollision(paddle1);
-    ball.checkCollision(paddle2);
-    ball.checkCollisionWall(app);
-    int win = ball.checkWin(app);
-    if(win == 0){
-      ball.update(deltaTime);
-    }
-    else{
-      resetRound(paddle1, paddle2, ball);
-    }
-
-    // clear screen and fill with blue
-    app.clear(sf::Color(30,144,255));
-
-    paddle1.draw(app);
-    paddle2.draw(app);
-    ball.draw(app);
-
-    // display
-    app.display();
-}
+#include "Game.h"
 
 int main(int argc, char** argv)
 {
@@ -56,16 +11,16 @@ int main(int argc, char** argv)
 
   // Instantiate the paddle for the human to control
   Paddle paddleHuman(400.0f);
-  paddleHuman.setPosition(700.0f, 300.0f);
 
   // Instantiate the paddle for the AI to control
   Paddle paddleAI(400.0f);
-  paddleAI.setPosition(100.0f, 300.0f);
 
   // Instantiate the ball that will bounce between the paddles
   Ball ball;
-  ball.setVelocity(300.0f);
-  ball.setPosition(400.0f, 300.0f);
+
+  // Instantiate a new game object that will track most game play
+  Game game(paddleAI, paddleHuman, ball);
+  game.resetRound(); 
 
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
@@ -87,7 +42,7 @@ int main(int argc, char** argv)
       }
     }
 
-    updateGame(paddleAI, paddleHuman, ball, App, deltaTime);
+    game.updateGame(App, deltaTime);
   }
 
   // Done.

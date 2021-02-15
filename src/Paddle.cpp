@@ -5,7 +5,7 @@ Paddle::Paddle(float speed){
     this->speed = speed;
 
     // Vector2f is a float vector that we use to make our paddle
-    paddle.setSize(sf::Vector2f(20.0, 100.0));
+    paddle.setSize(sf::Vector2f(10.0f, 100.0f));
     paddle.setFillColor(sf::Color::White);
 
     // Let's add a texture to our paddle

@@ -19,7 +19,9 @@ public:
 
     sf::Vector2f getPosition() {return ball.getPosition();}
     sf::Vector2f getHalfSize() {return sf::Vector2f(ball.getRadius(), ball.getRadius()); }
-
+    float getdX() { return dX; }
+    float getdY() { return dY; }
+    
 private:
     // sf::Vector2f speed(0.0f, 0.0f);
     float dX;
