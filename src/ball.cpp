@@ -41,6 +41,13 @@ void Ball::addRandomPerturbation(){
     dY += pow(-1, positiveOrNegativeY) + yPerturbation;
 }
 
+void Ball::changeColor(){
+    int r = rand() % 235 + 21; 
+    int g = rand() % 235 + 21; 
+    int b = rand() % 235 + 21; 
+    ball.setFillColor(sf::Color(r, g, b));  
+}
+
 bool Ball::checkCollisionWall(sf::RenderWindow& app){
     sf::Vector2f ballPosition =  getPosition();
     sf::Vector2f ballHalfSize = getHalfSize();
@@ -50,10 +57,7 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
-        int r = rand() % 235 + 21; 
-        int g = rand() % 235 + 21; 
-        int b = rand() % 235 + 21; 
-        ball.setFillColor(sf::Color(r, g, b));      
+        changeColor();
 
         return true;
     }
@@ -63,22 +67,42 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
 bool Ball::checkCollision(Paddle& paddle){
     sf::FloatRect paddleBounds = paddle.getGlobalBounds();
     sf::FloatRect ballBounds = ball.getGlobalBounds();
-    sf::FloatRect intersects;
+    sf::FloatRect intersection;
 
-    if(paddleBounds.intersects(ballBounds, intersects)){
-        dX = -dX;
+    float ballWidth = ballBounds.width;
+    float ballHeight = ballBounds.height;
+
+    // If we intersect on the side of the paddle we want to change the x direction
+    if(paddleBounds.intersects(ballBounds, intersection)){
+
+        // If we intersect on the side of the paddle we want to change the x direction
+        // We know that the height of our intersection rectangle will match the height of 
+        // our ball if we have a hit on the side of the paddle
+        if(abs(ballHeight - intersection.height) < 0.01f){
+            dX = -dX;
+        }
         
+        // If we intersect on the top or bottom of the paddle, we want to change the y direction
+
+
+        // If we intersect on the top/bottom and side of the paddle, we want to change both the x and y direction
+
+
+
+
+
+
+
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
-        int r = rand() % 235 + 21; 
-        int g = rand() % 235 + 21; 
-        int b = rand() % 235 + 21; 
-        ball.setFillColor(sf::Color(r, g, b)); 
+        changeColor();
 
         // Notify the that we have a collision
         return true;
     }
+
+
 
     // Notify the that we have no collision
     return false;

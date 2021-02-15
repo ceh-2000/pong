@@ -19,9 +19,9 @@ private:
     Paddle paddleAI;
     Paddle paddleHuman;
     Ball ball;
-    sf::Text displayScore;
     sf::Font font;
     float desiredY;
     int score1;
     int score2;
+    sf::Text displayScore;
 };

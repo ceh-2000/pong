@@ -16,6 +16,7 @@ public:
     bool checkCollision(Paddle& paddle);
     bool checkCollisionWall(sf::RenderWindow& app);
     int checkWin(sf::RenderWindow& app);
+    void changeColor();
 
     sf::Vector2f getPosition() {return ball.getPosition();}
     sf::Vector2f getHalfSize() {return sf::Vector2f(ball.getRadius(), ball.getRadius()); }
