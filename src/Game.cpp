@@ -27,14 +27,6 @@ void Game::resetGame(){
 }
 
 void Game::resetRound(float windowWidth, float windowHeight, float velocity){
-  displayScore.setString("Player 1: "+std::to_string(score1)+" Player 2: "+std::to_string(score2));
-  
-  paddleAI.setPosition(100.0f, windowHeight / 2.0f - paddleAI.getHalfSize().y);
-  paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
-  ball.setPosition(windowWidth / 2.0f, windowHeight / 2.0f);
-  ball.setVelocity(velocity);
-  desiredY = windowHeight / 2.0f;
-
   if(score1 == 3){
     std::cout << "Player 1 wins!" << std::endl;
     score1 = 0;
@@ -45,6 +37,15 @@ void Game::resetRound(float windowWidth, float windowHeight, float velocity){
     score1 = 0;
     score2 = 0;
   }
+
+  displayScore.setString("Player 1: "+std::to_string(score1)+" | Player 2: "+std::to_string(score2));
+  displayScore.setPosition(windowWidth / 2.0f -  130.0f, 0); // TODO: GET THE SIZE OF THE TEXT
+
+  paddleAI.setPosition(100.0f, windowHeight / 2.0f - paddleAI.getHalfSize().y);
+  paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
+  ball.setPosition(windowWidth / 2.0f, windowHeight / 2.0f);
+  ball.setVelocity(velocity);
+  desiredY = windowHeight / 2.0f;
 }
 
 void Game::AIFindY(float windowHeight){
