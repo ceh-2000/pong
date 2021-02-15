@@ -27,7 +27,7 @@ void Game::resetGame(){
 }
 
 void Game::resetRound(float windowWidth, float windowHeight, float velocity){
-  displayScore.setString("Player 1: "+score1);
+  displayScore.setString("Player 1: "+std::to_string(score1)+" Player 2: "+std::to_string(score2));
   
   paddleAI.setPosition(100.0f, windowHeight / 2.0f - paddleAI.getHalfSize().y);
   paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
@@ -99,6 +99,7 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     // clear screen and fill with blue
     app.clear(sf::Color::Black);
 
+    app.draw(displayScore);
     paddleAI.draw(app);
     paddleHuman.draw(app);
     ball.draw(app);
