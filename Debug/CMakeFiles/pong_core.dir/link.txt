@@ -1,2 +1,2 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libpong_core.a CMakeFiles/pong_core.dir/src/Ball.cpp.o CMakeFiles/pong_core.dir/src/Paddle.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libpong_core.a CMakeFiles/pong_core.dir/src/Ball.cpp.o CMakeFiles/pong_core.dir/src/Game.cpp.o CMakeFiles/pong_core.dir/src/Paddle.cpp.o
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libpong_core.a

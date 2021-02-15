@@ -3,5 +3,6 @@
 
 CMakeFiles/main.dir/bin/main.cpp.o
  ../include/Ball.h
+ ../include/Game.h
  ../include/Paddle.h
  /Users/clareheinbaugh/Desktop/game-design/pong/bin/main.cpp
