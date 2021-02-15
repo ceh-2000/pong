@@ -4,10 +4,11 @@
 #include "Ball.h"
 #include "Game.h"
 
-Game::Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball):
+Game::Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball, sf::Font& font):
     paddleAI(paddleAI),
     paddleHuman(paddleHuman),
-    ball(ball)
+    ball(ball),
+    font(font)
 {
     this->desiredY = 0.0f;
 }
@@ -20,37 +21,30 @@ void Game::resetGame(){
   
 }
 
-void Game::resetRound(){
-  paddleAI.setPosition(100.0f, 400.0f);
-  paddleHuman.setPosition(700.0f, 400.0f);
-  ball.setPosition(400.0f, 300.0f);
-  ball.setVelocity(200.0f);
-  desiredY = 400.0f;
+void Game::resetRound(float windowWidth, float windowHeight, float velocity){
+  paddleAI.setPosition(100.0f, windowHeight / 2.0f - paddleAI.getHalfSize().y);
+  paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
+  ball.setPosition(windowWidth / 2.0f, windowHeight / 2.0f);
+  ball.setVelocity(velocity);
+  desiredY = windowHeight / 2.0f;
 }
 
-void Game::AIFindY(float dX, float dY, sf::Vector2f pos){
-    desiredY = pos.y;
-    // float x = pos.x;
-    // float y = pos.y;
-
-    // if(dY < 0){
-    //     dX = abs(dX);
-    //     dY = abs(dY);
-    //     desiredY = dX/dY*(dY/dX*y-100);
-    // }
-    // else{
-    //     dX = abs(dX);
-    //     dY = abs(dY);
-    //     desiredY = dX/dY*(dY/dX*(600-y)-100);
-    // }
+void Game::AIFindY(float windowHeight){
+    if(ball.getdX() < 0){
+        desiredY = ball.getPosition().y - paddleAI.getHalfSize().y + ball.getHalfSize().y;
+    }
+    else{
+        desiredY = windowHeight / 2.0f - paddleAI.getHalfSize().y;
+    }
 }
 
 void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     // Update the AI's paddle
-    if(paddleAI.getPosition().y < desiredY){
+    AIFindY(app.getSize().y);
+    if(paddleAI.getPosition().y < desiredY && ball.getPosition().x < app.getSize().x / 2.0f){
         paddleAI.update(deltaTime, false);
     }
-    else if(paddleAI.getPosition().y > desiredY){
+    else if(paddleAI.getPosition().y > desiredY && ball.getPosition().x < app.getSize().x / 2.0f){
         paddleAI.update(deltaTime, true);
     }
 
@@ -61,8 +55,6 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
       paddleHuman.update(deltaTime, false);
     }
-    
-    AIFindY(ball.getdX(), ball.getdY(), ball.getPosition());
 
     // Update the ball
     ball.checkCollision(paddleAI);
@@ -76,11 +68,13 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
       ball.update(deltaTime);
     }
     else{
-      resetRound();
+      resetRound(app.getSize().x, app.getSize().y, 400.0f);
     }
 
+
+
     // clear screen and fill with blue
-    app.clear(sf::Color(30,144,255));
+    app.clear(sf::Color::Black);
 
     paddleAI.draw(app);
     paddleHuman.draw(app);

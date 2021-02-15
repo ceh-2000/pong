@@ -6,12 +6,12 @@
 class Game
 {
 public:
-    Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball);
+    Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball, sf::Font& font);
     ~Game();
 
     void resetGame();
-    void resetRound();
-    void AIFindY(float dX, float dY, sf::Vector2f pos);
+    void resetRound(float windowWidth, float windowHeight, float velocity);
+    void AIFindY(float windowHeight);
     void updateGame(sf::RenderWindow& app, float deltaTime);
 
 
@@ -19,5 +19,6 @@ private:
     Paddle paddleAI;
     Paddle paddleHuman;
     Ball ball;
+    sf::Font font;
     float desiredY;
 };

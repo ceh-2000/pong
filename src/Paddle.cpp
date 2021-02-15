@@ -8,12 +8,7 @@ Paddle::Paddle(float speed){
     paddle.setSize(sf::Vector2f(10.0f, 100.0f));
     paddle.setFillColor(sf::Color::White);
 
-    // Let's add a texture to our paddle
-    sf::Texture paddleTexture;
-    // TODO: Fix this file path to work as a relative path
-    
-    paddleTexture.loadFromFile("/Users/clareheinbaugh/Desktop/game-design/pong/src/leaves.jpg");
-    paddle.setTexture(&paddleTexture);
+
 }
  
 Paddle::~Paddle(){

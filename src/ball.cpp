@@ -50,9 +50,9 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
-        int r = rand() % 255 + 1; 
-        int g = rand() % 255 + 1; 
-        int b = rand() % 255 + 1; 
+        int r = rand() % 235 + 21; 
+        int g = rand() % 235 + 21; 
+        int b = rand() % 235 + 21; 
         ball.setFillColor(sf::Color(r, g, b));      
 
         return true;
@@ -70,9 +70,9 @@ bool Ball::checkCollision(Paddle& paddle){
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
-        int r = rand() % 255 + 1; 
-        int g = rand() % 255 + 1; 
-        int b = rand() % 255 + 1; 
+        int r = rand() % 235 + 21; 
+        int g = rand() % 235 + 21; 
+        int b = rand() % 235 + 21; 
         ball.setFillColor(sf::Color(r, g, b)); 
 
         // Notify the that we have a collision
