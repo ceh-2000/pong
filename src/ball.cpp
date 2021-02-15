@@ -47,7 +47,7 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
 
     if(ballPosition.y <= 0 || ballPosition.y + ballHalfSize.y * 2.0f >= app.getSize().y){
         dY = -dY;
-        addRandomPerturbation();
+        // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
         int r = rand() % 255 + 1; 
@@ -67,7 +67,7 @@ bool Ball::checkCollision(Paddle& paddle){
 
     if(paddleBounds.intersects(ballBounds, intersects) && getPosition().x < 700.0f && getPosition().x > 100.0f){
         dX = -dX;
-        addRandomPerturbation();
+        // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
         int r = rand() % 255 + 1; 

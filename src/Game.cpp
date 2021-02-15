@@ -21,26 +21,28 @@ void Game::resetGame(){
 }
 
 void Game::resetRound(){
-  paddleAI.setPosition(100.0f, 100.0f);
-  paddleHuman.setPosition(700.0f, 100.0f);
+  paddleAI.setPosition(100.0f, 400.0f);
+  paddleHuman.setPosition(700.0f, 400.0f);
   ball.setPosition(400.0f, 300.0f);
   ball.setVelocity(200.0f);
+  desiredY = 400.0f;
 }
 
 void Game::AIFindY(float dX, float dY, sf::Vector2f pos){
-    float x = pos.x;
-    float y = pos.y;
+    desiredY = pos.y;
+    // float x = pos.x;
+    // float y = pos.y;
 
-    if(dY < 0){
-        dX = abs(dX);
-        dY = abs(dY);
-        desiredY = dX/dY*(dY/dX*y-100);
-    }
-    else{
-        dX = abs(dX);
-        dY = abs(dY);
-        desiredY = dX/dY*(dY/dX*(600-y)-100);
-    }
+    // if(dY < 0){
+    //     dX = abs(dX);
+    //     dY = abs(dY);
+    //     desiredY = dX/dY*(dY/dX*y-100);
+    // }
+    // else{
+    //     dX = abs(dX);
+    //     dY = abs(dY);
+    //     desiredY = dX/dY*(dY/dX*(600-y)-100);
+    // }
 }
 
 void Game::updateGame(sf::RenderWindow& app, float deltaTime){
@@ -59,13 +61,15 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
       paddleHuman.update(deltaTime, false);
     }
+    
+    AIFindY(ball.getdX(), ball.getdY(), ball.getPosition());
 
     // Update the ball
     ball.checkCollision(paddleAI);
-    // ball.checkCollision(paddleHuman);
-    if(ball.checkCollision(paddleHuman)==true){
-        AIFindY(ball.getdX(), ball.getdY(), ball.getPosition());
-    }
+    ball.checkCollision(paddleHuman);
+    // if(ball.checkCollision(paddleHuman)==true){
+    //     AIFindY(ball.getdX(), ball.getdY(), ball.getPosition());
+    // }
     ball.checkCollisionWall(app);
     int win = ball.checkWin(app);
     if(win == 0){
