@@ -13,6 +13,7 @@ public:
     void addRandomPerturbation();
     void update(float deltaTime);
     void draw(sf::RenderWindow& app);
+    bool checkIntersections(Paddle& paddle, sf::RenderWindow& app);
     bool checkCollision(Paddle& paddle);
     bool checkCollisionWall(sf::RenderWindow& app);
     int checkWin(sf::RenderWindow& app);

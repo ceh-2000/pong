@@ -90,7 +90,14 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     }
 
     // Update the ball according to collisions
-    while(ball.checkCollision(paddleAI) || ball.checkCollision(paddleHuman) || ball.checkCollisionWall(app)){
+
+    ball.checkCollision(paddleAI);
+    ball.checkCollision(paddleHuman);
+    ball.checkCollisionWall(app);
+
+    // Resolve any lingering intersections using the new trajectory (velocity) of the ball
+    while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))
+    {
         ball.update(deltaTime);
     }
 

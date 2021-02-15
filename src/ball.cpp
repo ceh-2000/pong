@@ -19,13 +19,17 @@ void Ball::setPosition(float x, float y){
 }
 
 void Ball::setVelocity(float speed){
-    int dx = rand() % 150 + 50;
+    int range_min = 50;
+    int range_max = speed - range_min;
+    int dx = rand() % range_max + range_min;
     int dy = sqrt(speed*speed - dx*dx);
 
     float positiveOrNegativeY = rand() % 2;
 
     dX = dx;
     dY = dy * pow(-1, positiveOrNegativeY);
+    std::cout << std::to_string(dX) << std::endl;
+    std::cout << std::to_string(dY) << std::endl;
 }
 
 void Ball::addRandomPerturbation(){
@@ -48,12 +52,32 @@ void Ball::changeColor(){
     ball.setFillColor(sf::Color(r, g, b));  
 }
 
+bool Ball::checkIntersections(Paddle& paddle, sf::RenderWindow& app){
+    sf::FloatRect paddleBounds = paddle.getGlobalBounds();
+    sf::FloatRect ballBounds = ball.getGlobalBounds();
+    sf::FloatRect intersection;
+
+    sf::Vector2f ballPosition = getPosition();
+    sf::Vector2f ballHalfSize = getHalfSize();
+
+    if(ballPosition.y <= 0 || ballPosition.y + ballHalfSize.y * 2.0f >= app.getSize().y){
+        return true;
+    }
+
+    if(paddleBounds.intersects(ballBounds, intersection)){
+        return true;
+    }
+    return false;
+}
+
 bool Ball::checkCollisionWall(sf::RenderWindow& app){
     sf::Vector2f ballPosition =  getPosition();
     sf::Vector2f ballHalfSize = getHalfSize();
 
     if(ballPosition.y <= 0 || ballPosition.y + ballHalfSize.y * 2.0f >= app.getSize().y){
         dY = -dY;
+
+        std::cout << "Collide with wall" << std::endl;
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
@@ -72,6 +96,9 @@ bool Ball::checkCollision(Paddle& paddle){
     float ballWidth = ballBounds.width;
     float ballHeight = ballBounds.height;
 
+    float paddleWidth = paddleBounds.width;
+    float paddleHeight = paddleBounds.height;
+
     // If we intersect on the side of the paddle we want to change the x direction
     if(paddleBounds.intersects(ballBounds, intersection)){
 
@@ -79,19 +106,20 @@ bool Ball::checkCollision(Paddle& paddle){
         // We know that the height of our intersection rectangle will match the height of 
         // our ball if we have a hit on the side of the paddle
         if(abs(ballHeight - intersection.height) < 0.01f){
+
             dX = -dX;
+            std::cout << "Collide with side of paddle" << std::endl;
+
         }
-        
         // If we intersect on the top or bottom of the paddle, we want to change the y direction
-
-
         // If we intersect on the top/bottom and side of the paddle, we want to change both the x and y direction
+        else{
+            dX = -dX;
+            dY = -dY;
 
+            std::cout << "Collide with bottom of paddle" << std::endl;
 
-
-
-
-
+        }
 
         // addRandomPerturbation();
 
@@ -107,6 +135,8 @@ bool Ball::checkCollision(Paddle& paddle){
     // Notify the that we have no collision
     return false;
 }
+
+
 
 int Ball::checkWin(sf::RenderWindow& app){
     sf::Vector2f ballPosition =  getPosition();
