@@ -65,8 +65,9 @@ bool Ball::checkCollision(Paddle& paddle){
     sf::FloatRect ballBounds = ball.getGlobalBounds();
     sf::FloatRect intersects;
 
-    if(paddleBounds.intersects(ballBounds, intersects) && getPosition().x < 700.0f && getPosition().x > 100.0f){
+    if(paddleBounds.intersects(ballBounds, intersects)){
         dX = -dX;
+        
         // addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision

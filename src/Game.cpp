@@ -75,27 +75,24 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
       paddleHuman.update(deltaTime, false);
     }
 
-    // Update the ball
-    ball.checkCollision(paddleAI);
-    ball.checkCollision(paddleHuman);
-    // if(ball.checkCollision(paddleHuman)==true){
-    //     AIFindY(ball.getdX(), ball.getdY(), ball.getPosition());
-    // }
-    ball.checkCollisionWall(app);
+    // Check if either player has won the round
     int win = ball.checkWin(app);
-    if(win == 0){
-      ball.update(deltaTime);
+    if(win == 2){
+      score2 += 1;
+      resetRound(app.getSize().x, app.getSize().y, 400.0f);
     }
     else if(win == 1){
       score1 += 1;
       resetRound(app.getSize().x, app.getSize().y, 400.0f);
     }
     else{
-      score2 += 1;
-      resetRound(app.getSize().x, app.getSize().y, 400.0f);
+        ball.update(deltaTime);
     }
 
-
+    // Update the ball according to collisions
+    while(ball.checkCollision(paddleAI) || ball.checkCollision(paddleHuman) || ball.checkCollisionWall(app)){
+        ball.update(deltaTime);
+    }
 
     // clear screen and fill with blue
     app.clear(sf::Color::Black);
