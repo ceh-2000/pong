@@ -12,6 +12,7 @@ public:
     void draw(sf::RenderWindow& app);
     sf::Vector2f getPosition();
     sf::Vector2f getHalfSize();
+    sf::FloatRect getGlobalBounds(){return paddle.getGlobalBounds();};
 
 private:
     sf::RectangleShape paddle;

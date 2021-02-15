@@ -5,14 +5,17 @@
 class Ball
 {
 public:
-    Ball(float dX, float dY);
+    Ball();
     ~Ball();
 
     void setPosition(float x, float y);
+    void setVelocity(float speed);
+    void addRandomPerturbation();
     void update(float deltaTime);
     void draw(sf::RenderWindow& app);
     bool checkCollision(Paddle& paddle);
     bool checkCollisionWall(sf::RenderWindow& app);
+    int checkWin(sf::RenderWindow& app);
 
     sf::Vector2f getPosition() {return ball.getPosition();}
     sf::Vector2f getHalfSize() {return sf::Vector2f(ball.getRadius(), ball.getRadius()); }
