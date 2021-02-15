@@ -11,6 +11,11 @@ Game::Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball, sf::Font& font):
     font(font)
 {
     this->desiredY = 0.0f;
+    this->score1 = 0;
+    this->score2 = 0;
+
+    // Set the font of our text
+    displayScore.setFont(font); 
 }
 
 Game::~Game(){
@@ -22,11 +27,24 @@ void Game::resetGame(){
 }
 
 void Game::resetRound(float windowWidth, float windowHeight, float velocity){
+  displayScore.setString("Player 1: "+score1);
+  
   paddleAI.setPosition(100.0f, windowHeight / 2.0f - paddleAI.getHalfSize().y);
   paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
   ball.setPosition(windowWidth / 2.0f, windowHeight / 2.0f);
   ball.setVelocity(velocity);
   desiredY = windowHeight / 2.0f;
+
+  if(score1 == 3){
+    std::cout << "Player 1 wins!" << std::endl;
+    score1 = 0;
+    score2 = 0;
+  }
+  else if(score2 == 3){
+    std::cout << "Player 2 wins!" << std::endl;
+    score1 = 0;
+    score2 = 0;
+  }
 }
 
 void Game::AIFindY(float windowHeight){
@@ -67,7 +85,12 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     if(win == 0){
       ball.update(deltaTime);
     }
+    else if(win == 1){
+      score1 += 1;
+      resetRound(app.getSize().x, app.getSize().y, 400.0f);
+    }
     else{
+      score2 += 1;
       resetRound(app.getSize().x, app.getSize().y, 400.0f);
     }
 
