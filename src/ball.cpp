@@ -33,6 +33,8 @@ void Ball::setVelocity(float speed){
 }
 
 void Ball::addRandomPerturbation(){
+    // TODO: Only apply perterbation to the direction that changed
+
     // Randomize amount of perturbation
     float highestFloat = 5.0f;
     float xPerturbation = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/highestFloat));
@@ -41,8 +43,11 @@ void Ball::addRandomPerturbation(){
     // Randomize sign of perturbation
     float positiveOrNegativeX = rand() % 2;
     float positiveOrNegativeY = rand() % 2;
-    dX += pow(-1, positiveOrNegativeX) + xPerturbation;
-    dY += pow(-1, positiveOrNegativeY) + yPerturbation;
+    dX += pow(-1, positiveOrNegativeX) * xPerturbation;
+    dY += pow(-1, positiveOrNegativeY) * yPerturbation;
+    
+    std::cout << std::to_string(dX) << std::endl;
+    std::cout << std::to_string(dY) << std::endl;
 }
 
 void Ball::changeColor(){
@@ -78,7 +83,9 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
         dY = -dY;
 
         std::cout << "Collide with wall" << std::endl;
-        // addRandomPerturbation();
+
+        // Allow our angle to be slightly different
+        addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
         changeColor();
@@ -121,7 +128,8 @@ bool Ball::checkCollision(Paddle& paddle){
 
         }
 
-        // addRandomPerturbation();
+        // Allow our angle to be slightly different
+        addRandomPerturbation();
 
         // Set the color of the ball to something random if there is a collision
         changeColor();

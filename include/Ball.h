@@ -28,5 +28,5 @@ private:
     // sf::Vector2f speed(0.0f, 0.0f);
     float dX;
     float dY;
-    sf::CircleShape ball;
+    sf::CircleShape ball; // Store as pos, radius (not circle shape)
 };

@@ -15,6 +15,6 @@ public:
     sf::FloatRect getGlobalBounds(){return paddle.getGlobalBounds();};
 
 private:
-    sf::RectangleShape paddle;
+    sf::RectangleShape paddle; // Position and length/width 
     float speed;
 };

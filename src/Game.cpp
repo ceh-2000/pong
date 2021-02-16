@@ -98,7 +98,7 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     // Resolve any lingering intersections using the new trajectory (velocity) of the ball
     while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))
     {
-        ball.update(deltaTime);
+        ball.update(deltaTime); //another option is to move ball immediately outside and then continue game
     }
 
     // clear screen and fill with blue
