@@ -1,26 +1,31 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Ball.h"
 #include "Paddle.h"
+#include "PaddleViewAI.h"
+#include "PaddleViewHuman.h"
+#include "Ball.h"
+#include "Game.h"
 
 class Game
 {
 public:
-    Game(Paddle& paddleAI, Paddle& paddleHuman, Ball& ball, sf::Font& font);
+    Game(Paddle& paddle1, Paddle& paddle2, Ball& ball);
     ~Game();
 
-    void resetGame();
-    void resetRound(float windowWidth, float windowHeight, float velocity);
-    void AIFindY(float windowHeight);
-    void updateGame(sf::RenderWindow& app, float deltaTime);
+    // void resetGame();
+    // void resetRound(float windowWidth, float windowHeight, float velocity);
+    // void updateGame(sf::RenderWindow& app, float deltaTime);
 
 
 private:
-    Paddle paddleAI;
-    Paddle paddleHuman;
+    Paddle paddle1;
+    Paddle paddle2;
     Ball ball;
+
+    bool isPlayer1AI;
+    bool isPlayer2AI;
+
     sf::Font font;
-    float desiredY;
     int score1;
     int score2;
     sf::Text displayScore;

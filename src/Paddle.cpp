@@ -1,47 +1,46 @@
 #include "Paddle.h"
 #include <iostream>
 
-Paddle::Paddle(float speed){
-    this->speed = speed;
-
-    // Vector2f is a float vector that we use to make our paddle
-    paddle.setSize(sf::Vector2f(10.0f, 100.0f));
-    paddle.setFillColor(sf::Color::White);
-
-
+/*
+Paddle constructors
+*/
+Paddle::Paddle(sf::Vector2f position, float speed, float width, float height){
+  this->position = position;
+  this->speed = speed;
+  this->width = width;
+  this->height = height;
 }
  
-Paddle::~Paddle(){
-}
+Paddle::~Paddle(){}
 
-void Paddle::setPosition(float x, float y){
-  paddle.setPosition(x, y);
-}
-
-sf::Vector2f Paddle::getPosition(){
-  return paddle.getPosition();
-}
-
-sf::Vector2f Paddle::getHalfSize() {
-  return paddle.getSize() / 2.0f;
-}
-
-void Paddle::update(float deltaTime, bool isUp)
+/*
+Move the paddle up at a fixed speed given the time input
+*/
+void Paddle::up(float deltaTime)
 {
-    sf::Vector2f movement(0.0f, 0.0f);
-
-    // Move up
-    if(isUp == true && paddle.getPosition().y >= 0){
-      movement.y -= speed * deltaTime; // x = v * t
-    }
-    // Move down
-    if(isUp == false && paddle.getPosition().y <= 600 - paddle.getSize().y){
-      movement.y += speed * deltaTime; // x = v * t
-    }
-
-    paddle.move(movement);
+  // Make sure we're not moving the paddle out of bounds
+  if(position.y - speed * deltaTime >= 0.0f){
+    position.y -= speed * deltaTime; // x = v * t
+  }
 }
 
-void Paddle::draw(sf::RenderWindow& app){
-    app.draw(paddle);
+/*
+Move the paddle down at a fixed speed given the time input
+*/
+void Paddle::down(float windowHeight, float deltaTime)
+{
+  // Make sure we're not moving the paddle out of bounds
+  if(position.y + height + speed * deltaTime <= windowHeight){
+    position.y += speed * deltaTime; // x = v * t
+  }
 }
+
+
+    // // Let's add a texture to our paddle
+    // sf::Texture texture;
+    // if (!texture.loadFromFile("../data/dog.png"))
+    // {
+    //     std::cout << "No texture found." << std::endl;
+    // }
+    // sf::Sprite sprite;
+    // sprite.setTexture(texture);

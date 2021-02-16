@@ -5,28 +5,33 @@
 class Ball
 {
 public:
-    Ball();
+    Ball(sf::Vector2f pos, sf::Vector2f vel, float rad);
     ~Ball();
 
-    void setPosition(float x, float y);
-    void setVelocity(float speed);
+    void setRandomVelocity(float speed);
     void addRandomPerturbation();
-    void update(float deltaTime);
-    void draw(sf::RenderWindow& app);
-    bool checkIntersections(Paddle& paddle, sf::RenderWindow& app);
-    bool checkCollision(Paddle& paddle);
+    sf::Color randomColor();
     bool checkCollisionWall(sf::RenderWindow& app);
     int checkWin(sf::RenderWindow& app);
-    void changeColor();
+    void move(float deltaTime);
 
-    sf::Vector2f getPosition() {return ball.getPosition();}
-    sf::Vector2f getHalfSize() {return sf::Vector2f(ball.getRadius(), ball.getRadius()); }
-    float getdX() { return dX; }
-    float getdY() { return dY; }
-    
+    // bool checkCollision(Paddle& paddle);
+    // void update(float deltaTime);
+    // bool checkIntersections(Paddle& paddle, sf::RenderWindow& app);
+
+
+    void setPosition(float x, float y){ position.x = x; position.y = y; };
+    void setVelocity(float dx, float dy){ velocity.x = dx; velocity.y = dy; };
+    void setRadius(float r){ radius = r; };
+    void setColor(sf::Color c){ color = c; }
+    sf::Vector2f getPosition() { return position; }
+    sf::Vector2f getVelocity() { return velocity; }
+    float getRadius() { return radius; }
+    sf::Color getColor() { return color; }
+
 private:
-    // sf::Vector2f speed(0.0f, 0.0f);
-    float dX;
-    float dY;
-    sf::CircleShape ball; // Store as pos, radius (not circle shape)
+    sf::Vector2f position;
+    sf::Vector2f velocity;
+    float radius;
+    sf::Color color;
 };
