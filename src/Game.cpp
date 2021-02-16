@@ -22,6 +22,29 @@ Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball):
 
 Game::~Game(){}
 
+void Game::setPlayers(bool isPlayer1AI, bool isPlayer2AI){
+
+  if(isPlayer1AI){
+    PaddleViewAI paddleAI(paddle1);
+    this->player1 = &paddleAI;
+  }
+  else{
+    PaddleViewHuman paddleHuman(paddle1);
+    this->player1 = &paddleHuman;
+  }
+
+  if(isPlayer2AI){
+    PaddleViewAI paddleAI(paddle2);
+    this->player2 = &paddleAI;
+  }
+  else{
+    PaddleViewHuman paddleHuman(paddle2);
+    this->player2 = &paddleHuman;
+  }
+
+}
+
+
 // void Game::resetGame(){
   
 // }

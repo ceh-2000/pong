@@ -5,8 +5,8 @@
 class PaddleView
 {
 public:
-    PaddleView(Paddle& paddle);
-    ~PaddleView();
+    PaddleView(Paddle& paddle):paddle(paddle){}
+    ~PaddleView(){}
 
     void draw(sf::RenderWindow& app);
 protected:

@@ -6,14 +6,6 @@ This class allows us to determine the view for the AI's paddle
 */
 
 /*
-PaddleViewAI constructors
-*/
-// PaddleViewAI::PaddleViewAI(Paddle& paddle):
-//     paddle(paddle)
-// {}
-// PaddleViewAI::~PaddleViewAI(){}
-
-/*
 Find the best place to put the paddle and have the AI track that best position for the paddle
 */
 void PaddleViewAI::AIFindY(float windowHeight, float windowWidth, Ball ball){

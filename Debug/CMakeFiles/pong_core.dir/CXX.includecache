@@ -47,6 +47,8 @@ PaddleView.h
 ../include/PaddleViewHuman.h
 SFML/Graphics.hpp
 -
+Ball.h
+../include/Ball.h
 PaddleView.h
 ../include/PaddleView.h
 

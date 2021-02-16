@@ -12,6 +12,7 @@ public:
     Game(Paddle& paddle1, Paddle& paddle2, Ball& ball);
     ~Game();
 
+    void setPlayers(bool isPlayer1AI, bool isPlayer2AI);
     // void resetGame();
     // void resetRound(float windowWidth, float windowHeight, float velocity);
     // void updateGame(sf::RenderWindow& app, float deltaTime);
@@ -22,8 +23,8 @@ private:
     Paddle paddle2;
     Ball ball;
 
-    bool isPlayer1AI;
-    bool isPlayer2AI;
+    PaddleView *player1;
+    PaddleView *player2;
 
     sf::Font font;
     int score1;

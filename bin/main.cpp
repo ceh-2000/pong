@@ -23,6 +23,8 @@ int main(int argc, char** argv)
   // Instantiate a new game object that will track most game play
   Game game(paddle1, paddle2, ball);
 
+  game.setPlayers(true, false);
+
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
   sf::Clock clock;
