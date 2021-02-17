@@ -44,7 +44,7 @@ void Game::resetRound(float windowWidth, float windowHeight, float velocity){
 
   displayScore.setString("Player 1: "+std::to_string(score1)+" | Player 2: "+std::to_string(score2));
   displayScore.setPosition(windowWidth / 2.0f -  130.0f, 0); 
-
+  
   float paddleDistanceFromEdge = 100.0f;
   paddle1.setPosition(paddleDistanceFromEdge, windowHeight / 2.0f - paddle1.getHeight() / 2.0f);
   paddle2.setPosition(windowWidth - paddleDistanceFromEdge, windowHeight / 2.0f - paddle2.getHeight() / 2.0f);
@@ -55,6 +55,12 @@ void Game::resetRound(float windowWidth, float windowHeight, float velocity){
 void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     float windowWidth = app.getSize().x;
     float windowHeight = app.getSize().y;
+
+    // Check to see if we resize and move the paddle and text
+    if(abs(windowWidth - 100.0f - paddle2.getPosition().x) > 0.01f  ){
+      paddle2.setPosition(windowWidth - 100.0f, paddle2.getPosition().y);
+      displayScore.setPosition(windowWidth / 2.0f -  130.0f, 0); 
+    }
 
     // Update the paddles
     paddle1View.move(paddle1, windowHeight, windowWidth, ball, deltaTime); 
@@ -76,13 +82,15 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
 
     // ball.checkCollision(paddleAI);
     // ball.checkCollision(paddleHuman);
-    ball.checkCollisionWall(windowHeight);
+    ball.checkCollisionWall(windowHeight, true);
+    ball.checkCollisionPaddle1(paddle1, true);
+    ball.checkCollisionPaddle2(paddle2, true);
 
-    // // Resolve any lingering intersections using the new trajectory (velocity) of the ball
-    // while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))
-    // {
-    //     ball.update(deltaTime); //another option is to move ball immediately outside and then continue game
-    // }
+    // Resolve any lingering intersections using the new trajectory (velocity) of the ball
+    while(ball.checkCollisionWall(windowHeight, false) | ball.checkCollisionPaddle1(paddle1, false) | ball.checkCollisionPaddle2(paddle2, false))
+    {
+        ball.move(deltaTime); //another option is to move ball immediately outside and then continue game
+    }
 
     // clear screen and fill with blue
     app.clear(sf::Color::Red);

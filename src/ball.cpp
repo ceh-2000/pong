@@ -45,8 +45,6 @@ void Ball::setRandomVelocity(float speed){
 
     velocity.x = dx;
     velocity.y = dy * pow(-1, positiveOrNegativeY);
-    std::cout << std::to_string(velocity.x) << std::endl;
-    std::cout << std::to_string(velocity.y) << std::endl;
 }
 
 /*
@@ -65,9 +63,7 @@ void Ball::addRandomPerturbation(){
     float positiveOrNegativeY = rand() % 2;
     velocity.x += pow(-1, positiveOrNegativeX) * xPerturbation;
     velocity.y += pow(-1, positiveOrNegativeY) * yPerturbation;
-    
-    std::cout << std::to_string(velocity.x) << std::endl;
-    std::cout << std::to_string(velocity.y) << std::endl;
+
 }
 
 /*
@@ -85,18 +81,17 @@ sf::Color Ball::randomColor(){
 /*
 Check for a collision with the wall
 */
-bool Ball::checkCollisionWall(float windowHeight){
+bool Ball::checkCollisionWall(float windowHeight, bool resolve){
     if(position.y <= 0 || position.y + radius * 2.0f >= windowHeight){
-        velocity.y = -velocity.y;
+        if(resolve == true){
+            velocity.y = -velocity.y;
 
-        std::cout << "Collide with wall" << std::endl;
+            // Allow our angle to be slightly different
+            addRandomPerturbation();
 
-        // Allow our angle to be slightly different
-        addRandomPerturbation();
-
-        // Set the color of the ball to something random if there is a collision
-        randomColor();
-
+            // Set the color of the ball to something random if there is a collision
+            color = randomColor();
+        }
         return true;
     }
     return false;
@@ -124,65 +119,111 @@ void Ball::move(float deltaTime)
     position.y += velocity.y * deltaTime; // x = v * t
 }
 
-// bool Ball::checkIntersections(Paddle& paddle, sf::RenderWindow& app){
-//     sf::Vector2f ballPosition = getPosition();
-//     sf::Vector2f ballHalfSize = getHalfSize();
+/*
+Checks for (and can even resolve) collisions with paddle 1
+*/
+bool Ball::checkCollisionPaddle1(Paddle& paddle, bool resolve){
+    sf::FloatRect paddleRect(paddle.getPosition().x, paddle.getPosition().y, paddle.getWidth(), paddle.getHeight());
 
-//     if(ballPosition.y <= 0 || windowHeight + ballHalfSize.y * 2.0f >= windowHeight){
-//         return true;
-//     }
+    sf::Vector2f ballTopLeft = position;
 
-//     if(paddleBounds.intersects(ballBounds, intersection)){
-//         return true;
-//     }
-//     return false;
-// }
+    float ballTopRightX = position.x + radius * 2.0f;
+    float ballTopRightY = position.y;
+    sf::Vector2f ballTopRight(ballTopRightX, ballTopRightY);
+
+    float ballBottomLeftX = position.x;
+    float ballBottomLeftY = position.y + radius * 2.0f;
+    sf::Vector2f ballBottomLeft(ballBottomLeftX, ballBottomLeftY);
+
+    float ballBottomRightX = position.x + radius * 2.0f;
+    float ballBottomRightY = position.y + radius * 2.0f;
+    sf::Vector2f ballBottomRight(ballBottomRightX, ballBottomRightY);
 
 
-// bool Ball::checkCollision(Paddle& paddle){
-//     sf::FloatRect paddleBounds = paddle.getGlobalBounds();
-//     sf::FloatRect ballBounds = ball.getGlobalBounds();
-//     sf::FloatRect intersection;
+    // If we intersect on the side of the paddle we want to change the x direction
+    if(paddleRect.contains(ballTopLeft) && paddleRect.contains(ballBottomLeft) ){
+        if(resolve == true){
+            velocity.x = -velocity.x;
 
-//     float ballWidth = ballBounds.width;
-//     float ballHeight = ballBounds.height;
+            // Allow our angle to be slightly different
+            addRandomPerturbation();
 
-//     float paddleWidth = paddleBounds.width;
-//     float paddleHeight = paddleBounds.height;
+            // Set the color of the ball to something random if there is a collision
+            color = randomColor();
+        }
 
-//     // If we intersect on the side of the paddle we want to change the x direction
-//     if(paddleBounds.intersects(ballBounds, intersection)){
+        return true;
+    }
+    else if(paddleRect.contains(ballTopLeft) || paddleRect.contains(ballBottomLeft)){
+        if(resolve == true){
+            velocity.x = -velocity.x;
+            velocity.y = -velocity.y;
 
-//         // If we intersect on the side of the paddle we want to change the x direction
-//         // We know that the height of our intersection rectangle will match the height of 
-//         // our ball if we have a hit on the side of the paddle
-//         if(abs(ballHeight - intersection.height) < 0.01f){
+            // Allow our angle to be slightly different
+            addRandomPerturbation();
 
-//             dX = -dX;
-//             std::cout << "Collide with side of paddle" << std::endl;
+            // Set the color of the ball to something random if there is a collision
+            color = randomColor();
+        }
 
-//         }
-//         // If we intersect on the top or bottom of the paddle, we want to change the y direction
-//         // If we intersect on the top/bottom and side of the paddle, we want to change both the x and y direction
-//         else{
-//             dX = -dX;
-//             dY = -dY;
+        return true;
+    }
 
-//             std::cout << "Collide with bottom of paddle" << std::endl;
+    return false;
+}
 
-//         }
+/*
+Checks for (and can even resolve) collisions with paddle 2
+*/
+bool Ball::checkCollisionPaddle2(Paddle& paddle, bool resolve){
+    sf::FloatRect paddleRect(paddle.getPosition().x, paddle.getPosition().y, paddle.getWidth(), paddle.getHeight());
 
-//         // Allow our angle to be slightly different
-//         addRandomPerturbation();
+    sf::Vector2f ballTopLeft = position;
 
-//         // Set the color of the ball to something random if there is a collision
-//         changeColor();
+    float ballTopRightX = position.x + radius * 2.0f;
+    float ballTopRightY = position.y;
+    sf::Vector2f ballTopRight(ballTopRightX, ballTopRightY);
 
-//         // Notify the that we have a collision
-//         return true;
-//     }
-//     // Notify the that we have no collision
-//     return false;
-// }
+    float ballBottomLeftX = position.x;
+    float ballBottomLeftY = position.y + radius * 2.0f;
+    sf::Vector2f ballBottomLeft(ballBottomLeftX, ballBottomLeftY);
+
+    float ballBottomRightX = position.x + radius * 2.0f;
+    float ballBottomRightY = position.y + radius * 2.0f;
+    sf::Vector2f ballBottomRight(ballBottomRightX, ballBottomRightY);
+
+
+    // If we intersect on the side of the paddle we want to change the x direction
+    if(paddleRect.contains(ballTopRight) && paddleRect.contains(ballBottomRight) ){
+        if(resolve == true){
+            velocity.x = -velocity.x;
+
+            // Allow our angle to be slightly different
+            addRandomPerturbation();
+
+            // Set the color of the ball to something random if there is a collision
+            color = randomColor();
+        }
+
+        return true;
+    }
+    else if(paddleRect.contains(ballTopRight) || paddleRect.contains(ballBottomRight)){
+        if(resolve == true){
+            velocity.x = -velocity.x;
+            velocity.y = -velocity.y;
+
+            // Allow our angle to be slightly different
+            addRandomPerturbation();
+
+            // Set the color of the ball to something random if there is a collision
+            color = randomColor();
+        }
+
+        return true;
+    }
+
+    return false;
+}
+
 
 

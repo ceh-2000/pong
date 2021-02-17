@@ -9,7 +9,7 @@
 int main(int argc, char** argv)
 {
   // Create main window
-  sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong", sf::Style::Titlebar | sf::Style::Close);
+  sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
 
   float initialVelocity = 400.0f;
   float paddleDistanceFromEdge = 100.0f;
@@ -21,16 +21,19 @@ int main(int argc, char** argv)
   Paddle paddle1(sf::Vector2f(paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Paddle paddle2(sf::Vector2f(App.getSize().x - paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Ball ball(sf::Vector2f(App.getSize().x / 2.0f - ballRadius, App.getSize().y / 2.0f - ballRadius), sf::Vector2f(150.0f, 0), ballRadius);
-  PaddleView p1v(false);
-  PaddleView p2v(true);
+  PaddleView p1v(true);
+  PaddleView p2v(false);
   BallView bv;
 
   // Instantiate a new game object that will track most game play
   Game game(paddle1, paddle2, ball, p1v, p2v, bv);
+  game.resetRound(App.getSize().x, App.getSize().y, 400.0f);
 
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
   sf::Clock clock;
+
+  bool paused = false;
 
   // start main loop
   while(App.isOpen())
@@ -46,9 +49,26 @@ int main(int argc, char** argv)
       if(Event.type == sf::Event::Closed){
         App.close();
       }
+      // Catch the resize events
+      if (Event.type == sf::Event::Resized)
+      {
+          // Update the view to the new size of the window
+          sf::FloatRect visibleArea(0, 0, Event.size.width, Event.size.height);
+          App.setView(sf::View(visibleArea));
+      }
+      // Pause and unpause the game
+      if (Event.type == sf::Event::LostFocus){
+        paused = true;
+      }
+      if (Event.type == sf::Event::GainedFocus){
+        paused = false;
+      }
+
     }
 
-    game.updateGame(App, deltaTime);
+    if(paused == false){
+      game.updateGame(App, deltaTime);
+    }
   }
 
   // Done.

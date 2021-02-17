@@ -15,7 +15,7 @@ void BallView::move(Ball& ball, float deltaTime){
 
 void BallView::draw(Ball& ball, sf::RenderWindow& app){
     sf::CircleShape circle(ball.getRadius());
-    circle.setFillColor(sf::Color(150, 50, 250));
+    circle.setFillColor(ball.getColor());
     circle.setPosition(ball.getPosition());
     app.draw(circle);
 }
