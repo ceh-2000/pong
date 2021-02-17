@@ -27,7 +27,6 @@ int main(int argc, char** argv)
 
   // Instantiate a new game object that will track most game play
   Game game(paddle1, paddle2, ball, p1v, p2v, bv);
-  game.resetRound(App.getSize().x, App.getSize().y, 400.0f);
 
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
