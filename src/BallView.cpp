@@ -14,15 +14,10 @@ void BallView::move(Ball& ball, float deltaTime){
 }
 
 void BallView::draw(Ball& ball, sf::RenderWindow& app){
-    std::cout << ball.getPosition().x << std::endl;
-
-    sf::CircleShape shape(ball.getRadius());
-    shape.setFillColor(sf::Color(150, 50, 250));
-    shape.setPosition(ball.getPosition());
-    app.draw(shape);
-    // sf::CircleShape circle(ball.getRadius());
-    // circle.setPosition(ball.getPosition());
-    // app.draw(circle);
+    sf::CircleShape circle(ball.getRadius());
+    circle.setFillColor(sf::Color(150, 50, 250));
+    circle.setPosition(ball.getPosition());
+    app.draw(circle);
 }
 
 

@@ -30,26 +30,27 @@ Game::~Game(){}
   
 // }
 
-// void Game::resetRound(float windowWidth, float windowHeight, float velocity){
-//   if(score1 == 3){
-//     std::cout << "Player 1 wins!" << std::endl;
-//     score1 = 0;
-//     score2 = 0;
-//   }
-//   else if(score2 == 3){
-//     std::cout << "Player 2 wins!" << std::endl;
-//     score1 = 0;
-//     score2 = 0;
-//   }
+void Game::resetRound(float windowWidth, float windowHeight, float velocity){
+  if(score1 == 3){
+    std::cout << "Player 1 wins!" << std::endl;
+    score1 = 0;
+    score2 = 0;
+  }
+  else if(score2 == 3){
+    std::cout << "Player 2 wins!" << std::endl;
+    score1 = 0;
+    score2 = 0;
+  }
 
-//   displayScore.setString("Player 1: "+std::to_string(score1)+" | Player 2: "+std::to_string(score2));
-//   displayScore.setPosition(windowWidth / 2.0f -  130.0f, 0); 
+  displayScore.setString("Player 1: "+std::to_string(score1)+" | Player 2: "+std::to_string(score2));
+  displayScore.setPosition(windowWidth / 2.0f -  130.0f, 0); 
 
-//   paddle1.setPosition();
-//   paddleHuman.setPosition(windowWidth - 100.0f, windowHeight / 2.0f - paddleHuman.getHalfSize().y);
-//   ball.setPosition(windowWidth / 2.0f, windowHeight / 2.0f);
-//   ball.setVelocity(velocity);
-// }
+  float paddleDistanceFromEdge = 100.0f;
+  paddle1.setPosition(paddleDistanceFromEdge, windowHeight / 2.0f - paddle1.getHeight() / 2.0f);
+  paddle2.setPosition(windowWidth - paddleDistanceFromEdge, windowHeight / 2.0f - paddle2.getHeight() / 2.0f);
+  ball.setPosition(windowWidth / 2.0f - ball.getRadius(), windowHeight / 2.0f - ball.getRadius());
+  ball.setRandomVelocity(velocity);
+}
 
 void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     float windowWidth = app.getSize().x;
@@ -60,25 +61,22 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     paddle2View.move(paddle2, windowHeight, windowWidth, ball, deltaTime); 
     ballView.move(ball, deltaTime);
 
-    // Check if either player has won the round
-    // int win = ball.checkWin(app);
-    // if(win == 2){
-    //   score2 += 1;
-    //   resetRound(app.getSize().x, app.getSize().y, 400.0f);
-    // }
-    // else if(win == 1){
-    //   score1 += 1;
-    //   resetRound(app.getSize().x, app.getSize().y, 400.0f);
-    // }
-    // else{
-    //     ball.update(deltaTime);
-    // }
+    //Check if either player has won the round
+    int win = ball.checkWin(app);
+    if(win == 2){
+      score2 += 1;
+      resetRound(windowWidth, windowHeight, 400.0f);
+    }
+    else if(win == 1){
+      score1 += 1;
+      resetRound(windowWidth, windowHeight, 400.0f);
+    }
 
     // // Update the ball according to collisions
 
     // ball.checkCollision(paddleAI);
     // ball.checkCollision(paddleHuman);
-    // ball.checkCollisionWall(app);
+    ball.checkCollisionWall(app);
 
     // // Resolve any lingering intersections using the new trajectory (velocity) of the ball
     // while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))

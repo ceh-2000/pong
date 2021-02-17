@@ -12,9 +12,9 @@ public:
     ~Game();
 
     void updateGame(sf::RenderWindow& app, float deltaTime);
+    void resetRound(float windowWidth, float windowHeight, float velocity);
 
     // void resetGame();
-    // void resetRound(float windowWidth, float windowHeight, float velocity);
 
 
 private:
