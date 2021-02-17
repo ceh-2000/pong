@@ -85,8 +85,8 @@ sf::Color Ball::randomColor(){
 /*
 Check for a collision with the wall
 */
-bool Ball::checkCollisionWall(sf::RenderWindow& app){
-    if(position.y <= 0 || position.y + radius * 2.0f >= app.getSize().y){
+bool Ball::checkCollisionWall(float windowHeight){
+    if(position.y <= 0 || position.y + radius * 2.0f >= windowHeight){
         velocity.y = -velocity.y;
 
         std::cout << "Collide with wall" << std::endl;
@@ -105,11 +105,11 @@ bool Ball::checkCollisionWall(sf::RenderWindow& app){
 /*
 Check for a collision with a side wall (i.e. a win)
 */
-int Ball::checkWin(sf::RenderWindow& app){
+int Ball::checkWin(float windowWidth){
     if(position.x + radius * 2.0f <= 0){
         return 2;
     } 
-    if(position.x - radius * 4.0f >= app.getSize().x){    
+    if(position.x - radius * 4.0f >= windowWidth){    
         return 1;
     }
     return 0;
@@ -125,14 +125,10 @@ void Ball::move(float deltaTime)
 }
 
 // bool Ball::checkIntersections(Paddle& paddle, sf::RenderWindow& app){
-//     sf::FloatRect paddleBounds = paddle.getGlobalBounds();
-//     sf::FloatRect ballBounds = ball.getGlobalBounds();
-//     sf::FloatRect intersection;
-
 //     sf::Vector2f ballPosition = getPosition();
 //     sf::Vector2f ballHalfSize = getHalfSize();
 
-//     if(ballPosition.y <= 0 || ballPosition.y + ballHalfSize.y * 2.0f >= app.getSize().y){
+//     if(ballPosition.y <= 0 || windowHeight + ballHalfSize.y * 2.0f >= windowHeight){
 //         return true;
 //     }
 

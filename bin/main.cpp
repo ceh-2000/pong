@@ -22,7 +22,7 @@ int main(int argc, char** argv)
   Paddle paddle2(sf::Vector2f(App.getSize().x - paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Ball ball(sf::Vector2f(App.getSize().x / 2.0f - ballRadius, App.getSize().y / 2.0f - ballRadius), sf::Vector2f(150.0f, 0), ballRadius);
   PaddleView p1v(false);
-  PaddleView p2v(false);
+  PaddleView p2v(true);
   BallView bv;
 
   // Instantiate a new game object that will track most game play

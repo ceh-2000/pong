@@ -62,7 +62,7 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     ballView.move(ball, deltaTime);
 
     //Check if either player has won the round
-    int win = ball.checkWin(app);
+    int win = ball.checkWin(windowWidth);
     if(win == 2){
       score2 += 1;
       resetRound(windowWidth, windowHeight, 400.0f);
@@ -76,7 +76,7 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
 
     // ball.checkCollision(paddleAI);
     // ball.checkCollision(paddleHuman);
-    ball.checkCollisionWall(app);
+    ball.checkCollisionWall(windowHeight);
 
     // // Resolve any lingering intersections using the new trajectory (velocity) of the ball
     // while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))

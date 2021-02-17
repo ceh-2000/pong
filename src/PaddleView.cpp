@@ -20,10 +20,10 @@ void PaddleView::draw(Paddle& paddle, sf::RenderWindow& app){
 void PaddleView::moveAI(Paddle& paddle, float windowHeight, float windowWidth, Ball ball, float deltaTime){
     float desiredY = AIFindY(paddle, windowHeight, windowWidth, ball);
 
-    if(paddle.getPosition().y < desiredY){
+    if(paddle.getPosition().y > desiredY){
         paddle.up(deltaTime);
     }
-    else if(paddle.getPosition().y > desiredY){
+    else if(paddle.getPosition().y < desiredY){
         paddle.down(windowHeight, deltaTime);
     }
 }

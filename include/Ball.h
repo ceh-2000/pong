@@ -11,8 +11,8 @@ public:
     void setRandomVelocity(float speed);
     void addRandomPerturbation();
     sf::Color randomColor();
-    bool checkCollisionWall(sf::RenderWindow& app);
-    int checkWin(sf::RenderWindow& app);
+    bool checkCollisionWall(float windowHeight);
+    int checkWin(float windowWidth);
     void move(float deltaTime);
 
     // bool checkCollision(Paddle& paddle);
