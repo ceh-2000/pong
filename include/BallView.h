@@ -10,4 +10,6 @@ public:
 
     void move(Ball& ball, float deltaTime);
     void draw(Ball& ball, sf::RenderWindow& app);
+private:
+    sf::Texture texture;
 };

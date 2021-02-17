@@ -19,10 +19,15 @@ Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View
   {
     std::cout << "Could not load font." << std::endl;
   }
+  if (!backgroundTexture.loadFromFile("../data/faces.png"))
+  {
+    std::cout << "Could not load image from file." << std::endl;
+  }
 
   displayScore.setFont(font); 
 
   this->gameHappening = false;
+  this->level = 4;
 }
 
 Game::~Game(){}
@@ -30,42 +35,101 @@ Game::~Game(){}
 
 void Game::resetGame(sf::RenderWindow& app, int winner){
   gameHappening = false;
-  displayScore.setCharacterSize(50); 
+
+  // Set the text on this screen
+  displayScore.setCharacterSize(40); 
   displayScore.setPosition(0, 0); 
+  sf::String myText = "Press Space Bar to start\n"
+                      "or exit to quit.\n\n"
+                      "Press up to set player 1 as AI.\n"
+                      "Press down to set player 1 as human.\n"
+                      "Press left to set player 2 as AI.\n"
+                      "Press right to set player 2 as human.\n\n"
+                      "Press a number between 1 and 9\n"
+                      "to set difficulty\n";
   if(winner == 2){
-    displayScore.setString("Player 2 Wins!\nPress Space Bar to start\nor exit to quit.");
+    myText = "Player 2 Wins!\n"+myText;
   }
   else if(winner == 1){
-    displayScore.setString("Player 1 Wins!\nPress Space Bar to start\nor exit to quit.");
+    myText = "Player 1 Wins!\n"+myText;
   }
   else{
-    displayScore.setString("Press Space Bar to start\nor exit to quit.");
+    myText = "Stop coronavirus\nby moving the mask up and down.\n\n"+myText;
   }
-
-
+  displayScore.setString(myText);
 
   app.clear(sf::Color::Blue);
-  
+
+  displayScore.setFillColor(sf::Color::White); 
   app.draw(displayScore);
 
   app.display();
 
 
+  // Keyboard inputs for user to select players, difficulty, and game start
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+    paddle1View.setAI(true);
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+    paddle1View.setAI(false);
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+    paddle2View.setAI(true);
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+    paddle2View.setAI(false);
+  }
+
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)){
+    level = 1;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){
+    level = 2;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){
+    level = 3;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)){
+    level = 4;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num5)){
+    level = 5;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num6)){
+    level = 6;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num7)){
+    level = 7;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num8)){
+    level = 8;
+  }
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num9)){
+    level = 9;
+  }
+
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
     this->score1 = 0;
     this->score2 = 0;
     gameHappening = true;
-    resetRound(app, app.getSize().x, app.getSize().y, 400.0f);
-    
+    resetRound(app, app.getSize().x, app.getSize().y);
   }
 }
 
-void Game::resetRound(sf::RenderWindow& app, float windowWidth, float windowHeight, float velocity){
+void Game::resetRound(sf::RenderWindow& app, float windowWidth, float windowHeight){
   // Check for a game win
   if(score1 == 11){
+    // Set to default players
+    paddle1View.setAI(true);
+    paddle2View.setAI(false);
+    this->level = 4;
     resetGame(app, 1);    
   }
   else if(score2 == 11){
+    // Set to default players
+    paddle1View.setAI(true);
+    paddle2View.setAI(false);
+    this->level = 4;
     resetGame(app, 2);
   }
 
@@ -76,12 +140,12 @@ void Game::resetRound(sf::RenderWindow& app, float windowWidth, float windowHeig
 
   // Reposition the paddles and ball
   float paddleDistanceFromEdge = 100.0f;
-  paddle1.setPosition(paddleDistanceFromEdge, windowHeight / 2.0f - paddle1.getHeight() / 2.0f);
+  paddle1.setPosition(paddleDistanceFromEdge - paddle1.getWidth(), windowHeight / 2.0f - paddle1.getHeight() / 2.0f);
   paddle2.setPosition(windowWidth - paddleDistanceFromEdge, windowHeight / 2.0f - paddle2.getHeight() / 2.0f);
   ball.setPosition(windowWidth / 2.0f - ball.getRadius(), windowHeight / 2.0f - ball.getRadius());
 
   // Scale the ball's velocity based on how far the player has come
-  float ballVelocity = velocity + score1*20 + score2*20;
+  float ballVelocity = level * 100 + score1 * 20 + score2 * 20;
   ball.setRandomVelocity(ballVelocity);
 }
 
@@ -105,11 +169,11 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
       int win = ball.checkWin(windowWidth);
       if(win == 2){
         score2 += 1;
-        resetRound(app, windowWidth, windowHeight, 400.0f);
+        resetRound(app, windowWidth, windowHeight);
       }
       else if(win == 1){
         score1 += 1;
-        resetRound(app, windowWidth, windowHeight, 400.0f);
+        resetRound(app, windowWidth, windowHeight);
       }
 
       // Update the ball according to collisions
@@ -120,18 +184,25 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
       // Resolve any lingering intersections using the new trajectory (velocity) of the ball
       while(ball.checkCollisionWall(windowHeight, false) | ball.checkCollisionPaddle1(paddle1, false) | ball.checkCollisionPaddle2(paddle2, false))
       {
-          ball.move(deltaTime); //another option is to move ball immediately outside and then continue game
+          ball.move(deltaTime); // another option is to move ball immediately outside and then continue game
       }
 
-      // clear screen and fill with blue
-      app.clear(sf::Color::Red);
+      // Clear screen and fill with white
+      app.clear(sf::Color::White);
 
+      sf::RectangleShape background(sf::Vector2f(windowWidth, windowHeight));
+      const sf::Texture *pBackgroundTexture = &backgroundTexture;
+      background.setTexture(pBackgroundTexture);
+      app.draw(background);
+
+      displayScore.setFillColor(sf::Color::Black); 
       app.draw(displayScore);
+
       paddle1View.draw(paddle1, app);
       paddle2View.draw(paddle2, app);
       ballView.draw(ball, app);
 
-      // display
+      // Display
       app.display();
     }
     else{

@@ -13,7 +13,7 @@ public:
 
     void resetGame(sf::RenderWindow& app, int winner);
     void updateGame(sf::RenderWindow& app, float deltaTime);
-    void resetRound(sf::RenderWindow& app, float windowWidth, float windowHeight, float velocity);
+    void resetRound(sf::RenderWindow& app, float windowWidth, float windowHeight);
 
     // void resetGame();
 
@@ -28,9 +28,11 @@ private:
     BallView ballView;  
 
     sf::Font font;
+    sf::Texture backgroundTexture;
     int score1;
     int score2;
     sf::Text displayScore;
 
+    int level;
     bool gameHappening;
 };

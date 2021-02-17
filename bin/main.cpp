@@ -9,16 +9,16 @@
 int main(int argc, char** argv)
 {
   // Create main window
-  sf::RenderWindow App(sf::VideoMode(800,600,32), "Pong", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
+  sf::RenderWindow App(sf::VideoMode(800,600,32), "Covid-19 Pong", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
 
-  float initialVelocity = 400.0f;
+  float initialVelocity = 500.0f;
   float paddleDistanceFromEdge = 100.0f;
-  float paddleWidth = 20.0f;
-  float paddleHeight = 100.0f;
-  float ballRadius = 10.0f;
+  float paddleWidth = 30.0f;
+  float paddleHeight = 150.0f;
+  float ballRadius = 20.0f;
 
   // Create the paddles and balls
-  Paddle paddle1(sf::Vector2f(paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
+  Paddle paddle1(sf::Vector2f(paddleDistanceFromEdge - paddleWidth, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Paddle paddle2(sf::Vector2f(App.getSize().x - paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Ball ball(sf::Vector2f(App.getSize().x / 2.0f - ballRadius, App.getSize().y / 2.0f - ballRadius), sf::Vector2f(150.0f, 0), ballRadius);
   PaddleView p1v(true);
