@@ -23,7 +23,7 @@ public:
     void setPosition(float x, float y){ position.x = x; position.y = y; };
     void setVelocity(float dx, float dy){ velocity.x = dx; velocity.y = dy; };
     void setRadius(float r){ radius = r; };
-    void setColor(sf::Color c){ color = c; }
+    void setColor(sf::Color c){ color = c; };
     sf::Vector2f getPosition() { return position; }
     sf::Vector2f getVelocity() { return velocity; }
     float getRadius() { return radius; }

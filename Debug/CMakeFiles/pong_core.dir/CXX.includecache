@@ -12,39 +12,27 @@ SFML/Graphics.hpp
 Paddle.h
 ../include/Paddle.h
 
-../include/Game.h
-SFML/Graphics.hpp
--
-Paddle.h
-../include/Paddle.h
-PaddleView.h
-../include/PaddleView.h
-Ball.h
-../include/Ball.h
-
-../include/Paddle.h
-SFML/Graphics.hpp
--
-
-../include/PaddleView.h
+../include/BallView.h
 SFML/Graphics.hpp
 -
 Ball.h
 ../include/Ball.h
-Paddle.h
-../include/Paddle.h
 
-/Users/clareheinbaugh/Desktop/game-design/pong/src/Game.cpp
+../include/Paddle.h
 SFML/Graphics.hpp
 -
+
+/Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp
+Ball.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.h
 iostream
 -
-Game.h
-/Users/clareheinbaugh/Desktop/game-design/pong/src/Game.h
+cmath
+-
 
-/Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.cpp
-PaddleView.h
-/Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/BallView.cpp
+BallView.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/BallView.h
 iostream
 -
 

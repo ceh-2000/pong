@@ -2,12 +2,13 @@
 #include <iostream>
 #include "Game.h"
 
-Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View):
+Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View, BallView& ballView):
   paddle1(paddle1),
   paddle2(paddle2),
   ball(ball),
   paddle1View(paddle1View),
-  paddle2View(paddle2View)
+  paddle2View(paddle2View),
+  ballView(ballView)
 {
   // Set the initial scores
   this->score1 = 0;
@@ -57,6 +58,7 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     // Update the paddles
     paddle1View.move(paddle1, windowHeight, windowWidth, ball, deltaTime); 
     paddle2View.move(paddle2, windowHeight, windowWidth, ball, deltaTime); 
+    ballView.move(ball, deltaTime);
 
     // Check if either player has won the round
     // int win = ball.checkWin(app);
@@ -88,10 +90,9 @@ void Game::updateGame(sf::RenderWindow& app, float deltaTime){
     app.clear(sf::Color::Red);
 
     app.draw(displayScore);
-    
     paddle1View.draw(paddle1, app);
     paddle2View.draw(paddle2, app);
-    // app.draw(ball);
+    ballView.draw(ball, app);
 
     // display
     app.display();

@@ -12,6 +12,12 @@ SFML/Graphics.hpp
 Paddle.h
 ../include/Paddle.h
 
+../include/BallView.h
+SFML/Graphics.hpp
+-
+Ball.h
+../include/Ball.h
+
 ../include/Game.h
 SFML/Graphics.hpp
 -
@@ -19,6 +25,8 @@ Paddle.h
 ../include/Paddle.h
 PaddleView.h
 ../include/PaddleView.h
+BallView.h
+../include/BallView.h
 Ball.h
 ../include/Ball.h
 
@@ -47,4 +55,6 @@ Game.h
 /Users/clareheinbaugh/Desktop/game-design/pong/bin/Game.h
 PaddleView.h
 /Users/clareheinbaugh/Desktop/game-design/pong/bin/PaddleView.h
+BallView.h
+/Users/clareheinbaugh/Desktop/game-design/pong/bin/BallView.h
 

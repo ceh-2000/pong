@@ -2,12 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "Paddle.h"
 #include "PaddleView.h"
+#include "BallView.h"
 #include "Ball.h"
 
 class Game
 {
 public:
-    Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View);
+    Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View, BallView& ballView);
     ~Game();
 
     void updateGame(sf::RenderWindow& app, float deltaTime);
@@ -22,7 +23,8 @@ private:
     Ball ball;
 
     PaddleView paddle1View;
-    PaddleView paddle2View;    
+    PaddleView paddle2View;  
+    BallView ballView;  
 
     sf::Font font;
     int score1;

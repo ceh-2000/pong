@@ -5,7 +5,13 @@ CMakeFiles/pong_core.dir/src/Ball.cpp.o: ../include/Ball.h
 CMakeFiles/pong_core.dir/src/Ball.cpp.o: ../include/Paddle.h
 CMakeFiles/pong_core.dir/src/Ball.cpp.o: ../src/Ball.cpp
 
+CMakeFiles/pong_core.dir/src/BallView.cpp.o: ../include/Ball.h
+CMakeFiles/pong_core.dir/src/BallView.cpp.o: ../include/BallView.h
+CMakeFiles/pong_core.dir/src/BallView.cpp.o: ../include/Paddle.h
+CMakeFiles/pong_core.dir/src/BallView.cpp.o: ../src/BallView.cpp
+
 CMakeFiles/pong_core.dir/src/Game.cpp.o: ../include/Ball.h
+CMakeFiles/pong_core.dir/src/Game.cpp.o: ../include/BallView.h
 CMakeFiles/pong_core.dir/src/Game.cpp.o: ../include/Game.h
 CMakeFiles/pong_core.dir/src/Game.cpp.o: ../include/Paddle.h
 CMakeFiles/pong_core.dir/src/Game.cpp.o: ../include/PaddleView.h

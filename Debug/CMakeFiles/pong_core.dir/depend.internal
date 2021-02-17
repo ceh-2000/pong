@@ -5,8 +5,14 @@ CMakeFiles/pong_core.dir/src/Ball.cpp.o
  ../include/Ball.h
  ../include/Paddle.h
  /Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp
+CMakeFiles/pong_core.dir/src/BallView.cpp.o
+ ../include/Ball.h
+ ../include/BallView.h
+ ../include/Paddle.h
+ /Users/clareheinbaugh/Desktop/game-design/pong/src/BallView.cpp
 CMakeFiles/pong_core.dir/src/Game.cpp.o
  ../include/Ball.h
+ ../include/BallView.h
  ../include/Game.h
  ../include/Paddle.h
  ../include/PaddleView.h

@@ -3,6 +3,7 @@
 
 CMakeFiles/main.dir/bin/main.cpp.o
  ../include/Ball.h
+ ../include/BallView.h
  ../include/Game.h
  ../include/Paddle.h
  ../include/PaddleView.h
