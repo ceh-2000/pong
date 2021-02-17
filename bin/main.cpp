@@ -3,6 +3,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Game.h"
+#include "PaddleView.h"
 
 int main(int argc, char** argv)
 {
@@ -19,11 +20,11 @@ int main(int argc, char** argv)
   Paddle paddle1(sf::Vector2f(paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Paddle paddle2(sf::Vector2f(App.getSize().x - paddleDistanceFromEdge, App.getSize().y / 2.0f - paddleHeight / 2.0f), initialVelocity, paddleWidth, paddleHeight);
   Ball ball(sf::Vector2f(App.getSize().x - ballRadius, App.getSize().y - ballRadius), sf::Vector2f(initialVelocity, 0), ballRadius);
+  PaddleView p1v(false);
+  PaddleView p2v(false);
 
   // Instantiate a new game object that will track most game play
-  Game game(paddle1, paddle2, ball);
-
-  game.setPlayers(true, false);
+  Game game(paddle1, paddle2, ball, p1v, p2v);
 
   // Set up variables that will allow us to get the elapsed time
   float deltaTime = 0.0f;
@@ -45,7 +46,7 @@ int main(int argc, char** argv)
       }
     }
 
-    // game.updateGame(App, deltaTime);
+    game.updateGame(App, deltaTime);
   }
 
   // Done.

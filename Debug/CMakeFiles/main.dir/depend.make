@@ -5,7 +5,5 @@ CMakeFiles/main.dir/bin/main.cpp.o: ../include/Ball.h
 CMakeFiles/main.dir/bin/main.cpp.o: ../include/Game.h
 CMakeFiles/main.dir/bin/main.cpp.o: ../include/Paddle.h
 CMakeFiles/main.dir/bin/main.cpp.o: ../include/PaddleView.h
-CMakeFiles/main.dir/bin/main.cpp.o: ../include/PaddleViewAI.h
-CMakeFiles/main.dir/bin/main.cpp.o: ../include/PaddleViewHuman.h
 CMakeFiles/main.dir/bin/main.cpp.o: ../bin/main.cpp
 

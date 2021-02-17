@@ -17,14 +17,10 @@ SFML/Graphics.hpp
 -
 Paddle.h
 ../include/Paddle.h
-PaddleViewAI.h
-../include/PaddleViewAI.h
-PaddleViewHuman.h
-../include/PaddleViewHuman.h
+PaddleView.h
+../include/PaddleView.h
 Ball.h
 ../include/Ball.h
-Game.h
-../include/Game.h
 
 ../include/Paddle.h
 SFML/Graphics.hpp
@@ -33,24 +29,10 @@ SFML/Graphics.hpp
 ../include/PaddleView.h
 SFML/Graphics.hpp
 -
+Ball.h
+../include/Ball.h
 Paddle.h
 ../include/Paddle.h
-
-../include/PaddleViewAI.h
-SFML/Graphics.hpp
--
-Ball.h
-../include/Ball.h
-PaddleView.h
-../include/PaddleView.h
-
-../include/PaddleViewHuman.h
-SFML/Graphics.hpp
--
-Ball.h
-../include/Ball.h
-PaddleView.h
-../include/PaddleView.h
 
 /Users/clareheinbaugh/Desktop/game-design/pong/src/Game.cpp
 SFML/Graphics.hpp
@@ -59,4 +41,10 @@ iostream
 -
 Game.h
 /Users/clareheinbaugh/Desktop/game-design/pong/src/Game.h
+
+/Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.cpp
+PaddleView.h
+/Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.h
+iostream
+-
 

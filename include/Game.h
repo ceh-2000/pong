@@ -1,21 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Paddle.h"
-#include "PaddleViewAI.h"
-#include "PaddleViewHuman.h"
+#include "PaddleView.h"
 #include "Ball.h"
-#include "Game.h"
 
 class Game
 {
 public:
-    Game(Paddle& paddle1, Paddle& paddle2, Ball& ball);
+    Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View);
     ~Game();
 
-    void setPlayers(bool isPlayer1AI, bool isPlayer2AI);
+    void updateGame(sf::RenderWindow& app, float deltaTime);
+
     // void resetGame();
     // void resetRound(float windowWidth, float windowHeight, float velocity);
-    // void updateGame(sf::RenderWindow& app, float deltaTime);
 
 
 private:
@@ -23,8 +21,8 @@ private:
     Paddle paddle2;
     Ball ball;
 
-    PaddleView *player1;
-    PaddleView *player2;
+    PaddleView paddle1View;
+    PaddleView paddle2View;    
 
     sf::Font font;
     int score1;

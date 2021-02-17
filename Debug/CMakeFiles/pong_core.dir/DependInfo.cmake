@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/clareheinbaugh/Desktop/game-design/pong/src/Ball.cpp" "/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles/pong_core.dir/src/Ball.cpp.o"
   "/Users/clareheinbaugh/Desktop/game-design/pong/src/Game.cpp" "/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles/pong_core.dir/src/Game.cpp.o"
   "/Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.cpp" "/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles/pong_core.dir/src/Paddle.cpp.o"
+  "/Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.cpp" "/Users/clareheinbaugh/Desktop/game-design/pong/Debug/CMakeFiles/pong_core.dir/src/PaddleView.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

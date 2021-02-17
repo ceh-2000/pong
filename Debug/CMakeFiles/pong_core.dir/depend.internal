@@ -10,9 +10,12 @@ CMakeFiles/pong_core.dir/src/Game.cpp.o
  ../include/Game.h
  ../include/Paddle.h
  ../include/PaddleView.h
- ../include/PaddleViewAI.h
- ../include/PaddleViewHuman.h
  /Users/clareheinbaugh/Desktop/game-design/pong/src/Game.cpp
 CMakeFiles/pong_core.dir/src/Paddle.cpp.o
  ../include/Paddle.h
  /Users/clareheinbaugh/Desktop/game-design/pong/src/Paddle.cpp
+CMakeFiles/pong_core.dir/src/PaddleView.cpp.o
+ ../include/Ball.h
+ ../include/Paddle.h
+ ../include/PaddleView.h
+ /Users/clareheinbaugh/Desktop/game-design/pong/src/PaddleView.cpp

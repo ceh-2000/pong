@@ -2,10 +2,12 @@
 #include <iostream>
 #include "Game.h"
 
-Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball):
-  ball(ball),
+Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball, PaddleView& paddle1View, PaddleView& paddle2View):
   paddle1(paddle1),
-  paddle2(paddle2)
+  paddle2(paddle2),
+  ball(ball),
+  paddle1View(paddle1View),
+  paddle2View(paddle2View)
 {
   // Set the initial scores
   this->score1 = 0;
@@ -21,28 +23,6 @@ Game::Game(Paddle& paddle1, Paddle& paddle2, Ball& ball):
 }
 
 Game::~Game(){}
-
-void Game::setPlayers(bool isPlayer1AI, bool isPlayer2AI){
-
-  if(isPlayer1AI){
-    PaddleViewAI paddleAI(paddle1);
-    this->player1 = &paddleAI;
-  }
-  else{
-    PaddleViewHuman paddleHuman(paddle1);
-    this->player1 = &paddleHuman;
-  }
-
-  if(isPlayer2AI){
-    PaddleViewAI paddleAI(paddle2);
-    this->player2 = &paddleAI;
-  }
-  else{
-    PaddleViewHuman paddleHuman(paddle2);
-    this->player2 = &paddleHuman;
-  }
-
-}
 
 
 // void Game::resetGame(){
@@ -70,44 +50,49 @@ void Game::setPlayers(bool isPlayer1AI, bool isPlayer2AI){
 //   ball.setVelocity(velocity);
 // }
 
-// void Game::updateGame(sf::RenderWindow& app, float deltaTime){
-//     // TODO: CALL THE MOVE FUNCTION ON THE AI PADDLE
-//     // TODO: CALL THE MOVE FUNCTION ON THE HUMAN PADDLE
+void Game::updateGame(sf::RenderWindow& app, float deltaTime){
+    float windowWidth = app.getSize().x;
+    float windowHeight = app.getSize().y;
 
-//     // Check if either player has won the round
-//     int win = ball.checkWin(app);
-//     if(win == 2){
-//       score2 += 1;
-//       resetRound(app.getSize().x, app.getSize().y, 400.0f);
-//     }
-//     else if(win == 1){
-//       score1 += 1;
-//       resetRound(app.getSize().x, app.getSize().y, 400.0f);
-//     }
-//     else{
-//         ball.update(deltaTime);
-//     }
+    // Update the paddles
+    paddle1View.move(paddle1, windowHeight, windowWidth, ball, deltaTime); 
+    paddle2View.move(paddle2, windowHeight, windowWidth, ball, deltaTime); 
 
-//     // Update the ball according to collisions
+    // Check if either player has won the round
+    // int win = ball.checkWin(app);
+    // if(win == 2){
+    //   score2 += 1;
+    //   resetRound(app.getSize().x, app.getSize().y, 400.0f);
+    // }
+    // else if(win == 1){
+    //   score1 += 1;
+    //   resetRound(app.getSize().x, app.getSize().y, 400.0f);
+    // }
+    // else{
+    //     ball.update(deltaTime);
+    // }
 
-//     ball.checkCollision(paddleAI);
-//     ball.checkCollision(paddleHuman);
-//     ball.checkCollisionWall(app);
+    // // Update the ball according to collisions
 
-//     // Resolve any lingering intersections using the new trajectory (velocity) of the ball
-//     while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))
-//     {
-//         ball.update(deltaTime); //another option is to move ball immediately outside and then continue game
-//     }
+    // ball.checkCollision(paddleAI);
+    // ball.checkCollision(paddleHuman);
+    // ball.checkCollisionWall(app);
 
-//     // clear screen and fill with blue
-//     app.clear(sf::Color::Black);
+    // // Resolve any lingering intersections using the new trajectory (velocity) of the ball
+    // while(ball.checkIntersections(paddleAI, app) || ball.checkIntersections(paddleHuman, app))
+    // {
+    //     ball.update(deltaTime); //another option is to move ball immediately outside and then continue game
+    // }
 
-//     app.draw(displayScore);
-//     paddleAI.draw(app);
-//     paddleHuman.draw(app);
-//     app.draw(ball);
+    // clear screen and fill with blue
+    app.clear(sf::Color::Red);
 
-//     // display
-//     app.display();
-// }
+    app.draw(displayScore);
+    
+    paddle1View.draw(paddle1, app);
+    paddle2View.draw(paddle2, app);
+    // app.draw(ball);
+
+    // display
+    app.display();
+}

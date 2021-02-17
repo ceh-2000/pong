@@ -6,6 +6,4 @@ CMakeFiles/main.dir/bin/main.cpp.o
  ../include/Game.h
  ../include/Paddle.h
  ../include/PaddleView.h
- ../include/PaddleViewAI.h
- ../include/PaddleViewHuman.h
  /Users/clareheinbaugh/Desktop/game-design/pong/bin/main.cpp

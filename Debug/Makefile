@@ -263,6 +263,33 @@ src/Paddle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/Paddle.cpp.s
 .PHONY : src/Paddle.cpp.s
 
+src/PaddleView.o: src/PaddleView.cpp.o
+
+.PHONY : src/PaddleView.o
+
+# target to build an object file
+src/PaddleView.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/PaddleView.cpp.o
+.PHONY : src/PaddleView.cpp.o
+
+src/PaddleView.i: src/PaddleView.cpp.i
+
+.PHONY : src/PaddleView.i
+
+# target to preprocess a source file
+src/PaddleView.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/PaddleView.cpp.i
+.PHONY : src/PaddleView.cpp.i
+
+src/PaddleView.s: src/PaddleView.cpp.s
+
+.PHONY : src/PaddleView.s
+
+# target to generate assembly for a file
+src/PaddleView.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong_core.dir/build.make CMakeFiles/pong_core.dir/src/PaddleView.cpp.s
+.PHONY : src/PaddleView.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -285,6 +312,9 @@ help:
 	@echo "... src/Paddle.o"
 	@echo "... src/Paddle.i"
 	@echo "... src/Paddle.s"
+	@echo "... src/PaddleView.o"
+	@echo "... src/PaddleView.i"
+	@echo "... src/PaddleView.s"
 .PHONY : help
 
 
